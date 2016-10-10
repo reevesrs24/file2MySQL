@@ -4,17 +4,17 @@ import os
 
 # GLOBAL CONSTANTS
 ##########################
-HOST="host"
-PORT="3306"
-USER="username"
+HOST="localhost"
+PORT=33060
+USER="homestead"
 PASSWORD="secret"
-DATABASE="db"
+DATABASE="homestead"
 CHARSET="UTF8"
-PATH="C:\\PATH.."
+PATH="C:\\Users\\PIP\\Desktop\\wireframes"
 ##########################
 
-# Function traverses a file and all directories and files
-def readFile():
+# Function traverses a file and all sub directories
+def read_file():
 
     # open file in designated path
     for root, dirs, files in os.walk(PATH):
@@ -34,11 +34,11 @@ def readFile():
             app_type = root.rsplit('\\', 2)[-2]
 
 
-            uploadToDatabase(name, dir, app_type)
+            upload_to_database(name, dir, app_type)
 
 
 # Function connects to MySQL database and inserts 3 value into database
-def uploadToDatabase(name, type, app_type):
+def upload_to_database(name, type, app_type):
 
     # Connect to the database
     connection = pymysql.connect(host=HOST,
